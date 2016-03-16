@@ -1,0 +1,54 @@
+@colorHoverLink: rgb(52,149,215);
+
+// Header
+	@colorHeader: rgb(255, 255, 255);
+	@bgColorHeader: rgb(48,64,80);
+	@hTopHeader: 50px;
+
+
+.generate-columns(12);
+.generate-columns(@n, @i: 1) when (@i =< @n) {
+	.col-@{i} {
+		width: (@i * 100% / @n);
+		display: inline-block;
+	}
+	.generate-columns(@n, (@i + 1));
+}
+.col-hidden{display: none !important;}
+.col-show{display: inline-block !important;}
+
+.generate-divide(100);
+.generate-divide(@n, @i: 0) when (@i =< @n) {
+	.divide@{i} {
+		height: (@i * 1px);
+		display: block;
+		width: 100%;
+	}
+	.generate-divide(@n, (@i + 5));
+}
+
+
+@media screen and (max-width: 660px) {
+	.generate-smcolumns(12);
+	.generate-smcolumns(@n, @i: 1) when (@i =< @n) {
+		.sm-@{i} {
+			width: (@i * 100% / @n);
+			display: inline-block;
+		}
+		.generate-smcolumns(@n, (@i + 1));
+	}
+	.sm-hidden{display: none !important;}
+	.sm-show{display: inline-block !important;}
+}
+@media screen and (min-width: 660px) and (max-width: 800px) {
+	.generate-mdcolumns(12);
+	.generate-mdcolumns(@n, @i: 1) when (@i =< @n) {
+		.md-@{i} {
+			width: (@i * 100% / @n);
+			display: inline-block;
+		}
+		.generate-mdcolumns(@n, (@i + 1));
+	}
+	.md-hidden{display: none !important;}
+	.md-show{display: inline-block !important;}
+}
